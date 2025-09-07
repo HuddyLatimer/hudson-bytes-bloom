@@ -6,11 +6,11 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Copyright */}
-          <div className="text-center md:text-left">
+          <div className="text-center">
             <p className="text-muted-foreground">
-              © 2024 Hudson Latimer. All rights reserved.
+              © 2025 Hudson Latimer. All rights reserved.
             </p>
-            <p className="text-sm text-muted-foreground mt-1 flex items-center justify-center md:justify-start gap-1">
+            <p className="text-sm text-muted-foreground mt-1 flex items-center justify-center gap-1">
               Made with <Heart className="w-4 h-4 text-red-500 fill-current" /> and lots of ☕
             </p>
           </div>
