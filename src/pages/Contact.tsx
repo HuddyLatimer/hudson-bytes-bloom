@@ -23,14 +23,47 @@ const Contact = () => {
     message: ''
   });
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message sent successfully!",
-      description: "I'll get back to you within 24 hours.",
-    });
-    setFormData({ name: '', email: '', company: '', budget: '', timeline: '', projectType: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xqalgobe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for your inquiry. I'll get back to you within 24 hours.",
+        });
+        setFormData({ 
+          name: '', 
+          email: '', 
+          company: '', 
+          budget: '', 
+          timeline: '', 
+          projectType: '', 
+          message: '' 
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -264,10 +297,11 @@ const Contact = () => {
                     <Button 
                       type="submit" 
                       size="lg" 
-                      className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Send className="w-5 h-5 mr-2" />
-                      Send Project Inquiry
+                      {isSubmitting ? 'Sending...' : 'Send Project Inquiry'}
                     </Button>
                   </form>
                 </CardContent>
