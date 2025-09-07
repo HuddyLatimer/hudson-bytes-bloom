@@ -14,7 +14,10 @@ import {
   Globe,
   TrendingUp,
   Shield,
-  Clock
+  Clock,
+  Sparkles,
+  Target,
+  Layers
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -123,40 +126,69 @@ const Services = () => {
 
   return (
     <Layout>
+      {/* Animated Background */}
+      <div className="fixed inset-0 animate-mesh opacity-30 pointer-events-none" />
+      
       {/* Hero Section */}
-      <section className="pt-20 pb-16">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <Badge className="mb-6 bg-gradient-primary text-white">
-            Web Development Services
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-text bg-clip-text text-transparent">
-            Websites That Work
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Transform your online presence with modern, responsive websites that drive results. 
-            From business sites to personal portfolios, I create digital experiences that stand out.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-gradient-primary hover:shadow-glow transition-all duration-300" asChild>
-              <Link to="/contact">Start Your Project</Link>
-            </Button>
-            <Button variant="outline" size="lg" className="border-glass-border bg-glass hover:bg-glass/20" asChild>
-              <Link to="/projects">View Portfolio</Link>
-            </Button>
+      <section className="pt-20 pb-16 relative">
+        {/* Floating Elements */}
+        <div className="absolute top-40 left-10 w-20 h-20 rounded-full bg-steel/20 animate-float opacity-60" />
+        <div className="absolute top-60 right-20 w-16 h-16 rounded-full bg-electric/20 animate-float delay-1000 opacity-40" />
+        <div className="absolute bottom-20 left-1/4 w-12 h-12 rounded-full bg-charcoal/30 animate-float delay-2000 opacity-50" />
+        
+        <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
+          <div className="animate-slide-up">
+            <Badge className="mb-6 bg-gradient-primary text-white shadow-glow">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Professional Web Development
+            </Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-text bg-clip-text text-transparent">
+              Digital Solutions
+              <br />
+              <span className="text-steel">That Deliver</span>
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+              Elevate your digital presence with cutting-edge websites that combine stunning design 
+              with powerful functionality. From concept to deployment, I deliver results that matter.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-gradient-primary hover:shadow-glow transition-all duration-500 hover:scale-105 group" 
+                asChild
+              >
+                <Link to="/contact">
+                  Start Your Project
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-glass-border bg-glass hover:bg-steel/10 hover:border-steel/30 transition-all duration-500" 
+                asChild
+              >
+                <Link to="/projects">Portfolio Showcase</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16">
+      <section className="py-16 relative">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16 animate-slide-up">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <Target className="w-6 h-6 text-steel" />
+              <span className="text-steel font-medium">Service Packages</span>
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Choose Your <span className="bg-gradient-text bg-clip-text text-transparent">Perfect Package</span>
+              Choose Your <span className="bg-gradient-text bg-clip-text text-transparent">Perfect Solution</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Whether you need a business website, personal portfolio, or want to upgrade your existing site, 
-              I have the perfect solution for you.
+              Tailored packages designed to meet your specific needs, from startup ventures 
+              to established businesses looking to upgrade their digital presence.
             </p>
           </div>
 
@@ -164,43 +196,48 @@ const Services = () => {
             {services.map((service, index) => (
               <Card 
                 key={index}
-                className={`relative bg-gradient-card border-glass-border hover:shadow-glow transition-all duration-300 transform hover:scale-105 ${
-                  service.popular ? 'ring-2 ring-cyan/50' : ''
+                className={`relative bg-gradient-card border-glass-border hover:shadow-glow transition-all duration-700 transform hover:scale-105 hover:-translate-y-2 group ${
+                  service.popular ? 'ring-2 ring-steel/30 shadow-glow' : ''
                 }`}
+                style={{ animationDelay: `${index * 200}ms` }}
               >
                 {service.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-gradient-primary text-white px-4 py-1">
+                    <Badge className="bg-gradient-primary text-white px-4 py-1 animate-glow">
+                      <Layers className="w-3 h-3 mr-1" />
                       Most Popular
                     </Badge>
                   </div>
                 )}
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 p-3 rounded-full bg-glass border border-glass-border text-cyan">
+                <CardHeader className="text-center pb-4 relative">
+                  <div className="mx-auto mb-4 p-4 rounded-2xl bg-glass border border-glass-border text-steel group-hover:text-electric transition-colors duration-500 group-hover:animate-float">
                     {service.icon}
                   </div>
                   <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
-                  <CardDescription className="text-muted-foreground">
+                  <CardDescription className="text-muted-foreground leading-relaxed">
                     {service.description}
                   </CardDescription>
-                  <div className="text-2xl font-bold text-cyan mt-4">
+                  <div className="text-2xl font-bold text-steel mt-4 group-hover:text-electric transition-colors duration-500">
                     {service.price}
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-3 mb-6">
+                  <ul className="space-y-4 mb-8">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-cyan flex-shrink-0" />
-                        <span className="text-sm">{feature}</span>
+                      <li key={i} className="flex items-center gap-3 group/item">
+                        <CheckCircle className="w-5 h-5 text-steel flex-shrink-0 group-hover/item:text-electric transition-colors duration-300" />
+                        <span className="text-sm leading-relaxed">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <Button 
-                    className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                    className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-500 hover:scale-105 group/btn"
                     asChild
                   >
-                    <Link to="/contact">Get Started <ArrowRight className="w-4 h-4 ml-2" /></Link>
+                    <Link to="/contact">
+                      Get Started 
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
