@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -41,30 +42,30 @@ const Footer = () => {
         {/* Quick Links */}
         <div className="mt-8 pt-8 border-t border-glass-border text-center">
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-            <button 
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            <Link 
+              to="/about"
               className="hover:text-cyan transition-colors duration-300"
             >
               About
-            </button>
-            <button 
-              onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
+            </Link>
+            <Link 
+              to="/skills"
               className="hover:text-cyan transition-colors duration-300"
             >
               Skills
-            </button>
-            <button 
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            </Link>
+            <Link 
+              to="/projects"
               className="hover:text-cyan transition-colors duration-300"
             >
               Projects
-            </button>
-            <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            </Link>
+            <Link 
+              to="/contact"
               className="hover:text-cyan transition-colors duration-300"
             >
               Contact
-            </button>
+            </Link>
           </div>
         </div>
       </div>
