@@ -308,6 +308,77 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Recent Work Section */}
+      <section className="py-16 bg-gradient-card">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Recent <span className="bg-gradient-text bg-clip-text text-transparent">Work</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Check out our latest project - a modern construction company website built with cutting-edge technology.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="order-2 md:order-1">
+              <Card className="bg-glass border-glass-border shadow-lg hover:shadow-glow transition-all duration-500">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-steel" />
+                    Otto Construction
+                  </CardTitle>
+                  <CardDescription>
+                    Professional construction company website featuring modern design, responsive layout, and optimized performance.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-steel" />
+                      <span>Custom responsive design</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-steel" />
+                      <span>SEO optimized</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-steel" />
+                      <span>Fast loading performance</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-steel" />
+                      <span>Professional portfolio showcase</span>
+                    </div>
+                  </div>
+                  <Button 
+                    className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                    asChild
+                  >
+                    <a href="https://ottoconstruction.ca" target="_blank" rel="noopener noreferrer">
+                      Visit Live Site
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div className="order-1 md:order-2">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-primary rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <iframe
+                  src="https://ottoconstruction.ca"
+                  className="relative w-full h-96 rounded-xl border border-glass-border shadow-lg"
+                  title="Otto Construction Website Preview"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 text-center">
         <div className="max-w-4xl mx-auto px-6">
