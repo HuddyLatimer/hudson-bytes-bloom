@@ -65,7 +65,7 @@ const Services = () => {
         "SEO enhancements",
         "Feature additions"
       ],
-      price: "Starting at $800",
+      price: "Starting at $85",
       popular: false
     }
   ];
