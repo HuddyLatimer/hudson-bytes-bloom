@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Code2 } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,10 +22,10 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { label: 'About', id: 'about' },
-    { label: 'Skills', id: 'skills' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Contact', id: 'contact' },
+    { label: 'About', path: '/about' },
+    { label: 'Skills', path: '/skills' },
+    { label: 'Projects', path: '/projects' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -36,31 +37,31 @@ const Navigation = () => {
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          <Link 
+            to="/"
             className="flex items-center gap-2 text-xl font-bold bg-gradient-text bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
           >
             <Code2 className="w-6 h-6 text-cyan" />
             Hudson Latimer
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
+              <Link
+                key={item.path}
+                to={item.path}
                 className="text-muted-foreground hover:text-cyan transition-colors duration-300 font-medium"
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
             <Button 
               size="sm"
               className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
-              onClick={() => scrollToSection('contact')}
+              asChild
             >
-              Get In Touch
+              <Link to="/contact">Get In Touch</Link>
             </Button>
           </div>
 
@@ -80,20 +81,21 @@ const Navigation = () => {
           <div className="md:hidden mt-4 p-4 bg-card/95 backdrop-blur-md rounded-lg border border-glass-border">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                <Link
+                  key={item.path}
+                  to={item.path}
                   className="text-left text-muted-foreground hover:text-cyan transition-colors duration-300 py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
               <Button 
                 size="sm"
                 className="bg-gradient-primary hover:shadow-glow transition-all duration-300 mt-2"
-                onClick={() => scrollToSection('contact')}
+                asChild
               >
-                Get In Touch
+                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Get In Touch</Link>
               </Button>
             </div>
           </div>
