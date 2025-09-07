@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -9,9 +9,6 @@ const Footer = () => {
           <div className="text-center">
             <p className="text-muted-foreground">
               © 2025 Hudson Latimer. All rights reserved.
-            </p>
-            <p className="text-sm text-muted-foreground mt-1 flex items-center justify-center gap-1">
-              Made with <Heart className="w-4 h-4 text-red-500 fill-current" /> and lots of ☕
             </p>
           </div>
 
