@@ -35,7 +35,7 @@ const Services = () => {
         "Social media integration",
         "Fast loading & secure"
       ],
-      price: "Starting at $1,200",
+      price: "Starting at $299",
       popular: true
     },
     {
@@ -50,7 +50,7 @@ const Services = () => {
         "Mobile optimization",
         "Easy content updates"
       ],
-      price: "Starting at $600",
+      price: "Starting at $99",
       popular: false
     },
     {
