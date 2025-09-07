@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail, Code, User, FolderOpen, MessageCircle } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Code, User, FolderOpen, MessageCircle, Briefcase } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -32,16 +32,16 @@ const Index = () => {
               Hudson Latimer
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-4">
-              Freelance Web Developer
+              Freelance Web Developer & Digital Solutions
             </p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              19-year-old IT Programming student crafting modern web experiences 
-              from Miami & Halifax. Passionate about clean code and innovative solutions.
+              19-year-old IT Programming student crafting modern web experiences from Miami & Halifax. 
+              I help businesses and individuals establish their online presence with stunning, functional websites.
             </p>
           </div>
 
           {/* Navigation Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 max-w-4xl mx-auto">
             <Link 
               to="/about"
               className="group p-6 bg-glass border border-glass-border rounded-lg hover:bg-glass/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-glow"
@@ -65,12 +65,20 @@ const Index = () => {
               <FolderOpen className="w-8 h-8 text-cyan mx-auto mb-3 group-hover:text-purple transition-colors duration-300" />
               <h3 className="font-semibold text-sm">Projects</h3>
             </Link>
+
+            <Link 
+              to="/services"
+              className="group p-6 bg-glass border border-glass-border rounded-lg hover:bg-glass/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-glow"
+            >
+              <Briefcase className="w-8 h-8 text-purple mx-auto mb-3 group-hover:text-cyan transition-colors duration-300" />
+              <h3 className="font-semibold text-sm">Services</h3>
+            </Link>
             
             <Link 
               to="/contact"
               className="group p-6 bg-glass border border-glass-border rounded-lg hover:bg-glass/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-glow"
             >
-              <MessageCircle className="w-8 h-8 text-purple mx-auto mb-3 group-hover:text-cyan transition-colors duration-300" />
+              <MessageCircle className="w-8 h-8 text-cyan mx-auto mb-3 group-hover:text-purple transition-colors duration-300" />
               <h3 className="font-semibold text-sm">Contact</h3>
             </Link>
           </div>
@@ -82,7 +90,7 @@ const Index = () => {
               className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105"
               asChild
             >
-              <Link to="/projects">View My Work</Link>
+              <Link to="/services">View Services</Link>
             </Button>
             <Button 
               variant="outline" 
@@ -90,7 +98,15 @@ const Index = () => {
               className="border-glass-border bg-glass hover:bg-glass/20 backdrop-blur-sm transition-all duration-300"
               asChild
             >
-              <Link to="/contact">Get In Touch</Link>
+              <Link to="/projects">View Portfolio</Link>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-glass-border bg-glass hover:bg-glass/20 backdrop-blur-sm transition-all duration-300"
+              asChild
+            >
+              <Link to="/contact">Get Quote</Link>
             </Button>
           </div>
 
